@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 @Setter
 @ToString
 public class BoardDTO {
-
     private Long id;
     private String boardWriter;
     private String boardPass;
