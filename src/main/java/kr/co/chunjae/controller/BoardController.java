@@ -74,20 +74,20 @@ public class BoardController {
 //        return "redirect:/board?id="+boardDTO.getId(); - 조회수 증가
     }
 
-
     // /board/paging?page=2
-    // 처음 페이지 요청은 1페이지를 보여줌
+    // 처음 페이지 요청은 1 페이지를 보여줌
     @GetMapping("/paging")
     public String paging(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
         System.out.println("page = " + page);
         // 해당 페이지에서 보여줄 글 목록
-        List<BoardDTO> pagingList = boardService.pagingList(page);
+        List<BoardDTO> pagingList = boardService.pageList(page);
         System.out.println("pagingList = " + pagingList);
         PageDTO pageDTO = boardService.pagingParam(page);
         model.addAttribute("boardList", pagingList);
         model.addAttribute("paging", pageDTO);
         return "paging";
     }
+
 
 
 }

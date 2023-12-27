@@ -4,6 +4,7 @@ import kr.co.chunjae.dto.BoardDTO;
 import kr.co.chunjae.dto.PageDTO;
 import kr.co.chunjae.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.taglibs.standard.lang.jstl.test.ParserTest;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -40,12 +41,12 @@ public class BoardService {
 
     int pageLimit = 3; // 한 페이지당 보여줄 글 갯수
     int blockLimit = 3; // 하단에 보여줄 페이지 번호 갯수
-    public List<BoardDTO> pagingList(int page) {
+    public List<BoardDTO> pageList(int page) {
         /*
-        1페이지당 보여지는 글 갯수 3
-            1page => 0
-            2page => 3
-            3page => 6
+        1 페이지당 보여지는 글 갯수 3개
+        1 page => 0
+        2 page => 3
+        3 page => 6
          */
         int pagingStart = (page - 1) * pageLimit;
         Map<String, Integer> pagingParams = new HashMap<>();

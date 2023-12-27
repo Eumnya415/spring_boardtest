@@ -37,6 +37,7 @@ public class BoardRepository {
         sql.update("Board.update", boardDTO);
     }
 
+
     public List<BoardDTO> pagingList(Map<String, Integer> pagingParams) {
         return sql.selectList("Board.pagingList", pagingParams);
     }

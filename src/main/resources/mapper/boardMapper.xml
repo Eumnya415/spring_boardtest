@@ -30,4 +30,5 @@
         select count(id) from board_table
     </select>
 
+
 </mapper>
