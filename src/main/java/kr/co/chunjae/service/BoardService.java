@@ -41,6 +41,7 @@ public class BoardService {
 
     int pageLimit = 3; // 한 페이지당 보여줄 글 갯수
     int blockLimit = 3; // 하단에 보여줄 페이지 번호 갯수
+    // 전역변수화
     public List<BoardDTO> pageList(int page) {
         /*
         1 페이지당 보여지는 글 갯수 3개
