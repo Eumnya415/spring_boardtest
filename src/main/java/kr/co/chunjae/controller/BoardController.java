@@ -40,7 +40,7 @@ public class BoardController {
         return "list";
     }
 
-    @GetMapping
+    @GetMapping // page 관련 내용을 복사헤서 findById에 추가하고, model에도 page 값을 같이 가져갈 수 있도록 수정하기
     public String findById(@RequestParam("id") Long id,
                            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
                            Model model) {
