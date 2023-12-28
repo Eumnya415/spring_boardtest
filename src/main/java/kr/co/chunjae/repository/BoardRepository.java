@@ -11,6 +11,7 @@ import java.util.Map;
 @Repository
 @RequiredArgsConstructor
 public class BoardRepository {
+
     private final SqlSessionTemplate sql;
 
     public int save(BoardDTO boardDTO) {
@@ -36,7 +37,6 @@ public class BoardRepository {
     public void update(BoardDTO boardDTO) {
         sql.update("Board.update", boardDTO);
     }
-
 
     public List<BoardDTO> pagingList(Map<String, Integer> pagingParams) {
         return sql.selectList("Board.pagingList", pagingParams);

@@ -40,7 +40,7 @@
         </c:otherwise>
     </c:choose>
 
-    <%--  for(int i=startPage; i<=endPage; i++)  -> java 코드와 비교하기  --%>
+    <%--  for(int i=startPage; i<=endPage; i++)      --%>
     <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="i" step="1">
         <c:choose>
             <%-- 요청한 페이지에 있는 경우 현재 페이지 번호는 텍스트만 보이게 --%>

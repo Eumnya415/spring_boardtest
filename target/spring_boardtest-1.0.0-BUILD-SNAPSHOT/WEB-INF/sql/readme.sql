@@ -18,15 +18,6 @@ create table board_file_table
     boardId bigint,
     constraint fk_board_file foreign key(boardId) references board_table(id) on delete cascade
 );
-drop table if exists comment_table;
-create table comment_table(
-                              id bigint primary key auto_increment,
-                              commentWriter varchar(50),
-                              commentContents varchar(200),
-                              boardId bigint,
-                              commentCreatedTime datetime default now(),
-                              constraint fk_comment_table foreign key (boardId) references board_table(id) on delete cascade
-);
 
 -- 현페이지 3개식 출력
 select * from board_table order by id desc limit 0, 3; --12, 11, 10
@@ -42,3 +33,16 @@ select * from board_table order by id desc limit 1, 5; --12, 11, 10, 9, 8
 select * from board_table order by id desc limit 0, 3; --12, 11, 10
 select * from board_table order by id desc limit 3, 3; --9, 8, 7
 select * from board_table order by id desc limit 6, 3; --6, 5, 4
+
+---------------------------------------------------------------
+drop table if exists comment_table;
+create table comment_table(
+  id bigint primary key auto_increment,
+  commentWriter varchar(50),
+  commentContents varchar(200),
+  boardId bigint,
+  commentCreatedTime datetime default now(),
+  constraint fk_comment_table foreign key (boardId) references board_table(id) on delete cascade
+);
+
+SELECT * FROM comment_table;

@@ -1,8 +1,10 @@
 package kr.co.chunjae.controller;
 
 import kr.co.chunjae.dto.BoardDTO;
+import kr.co.chunjae.dto.CommentDTO;
 import kr.co.chunjae.dto.PageDTO;
 import kr.co.chunjae.service.BoardService;
+import kr.co.chunjae.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final CommentService commentService;
 
     @GetMapping("/save")
     public String saveForm(){
@@ -40,7 +43,7 @@ public class BoardController {
         return "list";
     }
 
-    @GetMapping // page 관련 내용을 복사헤서 findById에 추가하고, model에도 page 값을 같이 가져갈 수 있도록 수정하기
+    @GetMapping
     public String findById(@RequestParam("id") Long id,
                            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
                            Model model) {
@@ -49,6 +52,8 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         model.addAttribute("page", page);
+        List<CommentDTO> commentDTOList = commentService.findAll(id);
+        model.addAttribute("commentList", commentDTOList);
         return "detail";
     }
 
@@ -74,20 +79,20 @@ public class BoardController {
 //        return "redirect:/board?id="+boardDTO.getId(); - 조회수 증가
     }
 
+
     // /board/paging?page=2
-    // 처음 페이지 요청은 1 페이지를 보여줌
+    // 처음 페이지 요청은 1페이지를 보여줌
     @GetMapping("/paging")
     public String paging(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
         System.out.println("page = " + page);
         // 해당 페이지에서 보여줄 글 목록
-        List<BoardDTO> pagingList = boardService.pageList(page);
+        List<BoardDTO> pagingList = boardService.pagingList(page);
         System.out.println("pagingList = " + pagingList);
         PageDTO pageDTO = boardService.pagingParam(page);
         model.addAttribute("boardList", pagingList);
         model.addAttribute("paging", pageDTO);
         return "paging";
     }
-
 
 
 }

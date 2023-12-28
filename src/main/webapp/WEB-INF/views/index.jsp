@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>index</title>
-	<h1>Hello Springframework</h1>
+	<h2>Hello Springframework</h2>
 	<a href="/board/save">글작성</a>
 	<a href="/board">글목록</a>
 	<a href="/board/paging">페이징 목록</a>
