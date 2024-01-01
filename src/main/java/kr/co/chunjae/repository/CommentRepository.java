@@ -18,6 +18,14 @@ public class CommentRepository {
         sql.insert("Comment.save", commentDTO);
     }
 
+    public void update(CommentDTO commentDTO) {
+        sql.update("Comment.update", commentDTO);
+    }
+
+    public void delete(Long commentId) {
+        sql.delete("Comment.delete", commentId);
+    }
+
     public List<CommentDTO> findAll(Long boardId) {
         return sql.selectList("Comment.findAll", boardId);
     }

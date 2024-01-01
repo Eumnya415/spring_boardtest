@@ -18,6 +18,14 @@ public class CommentService {
         commentRepository.save(commentDTO);
     }
 
+    public void update(CommentDTO commentDTO) {
+        commentRepository.update(commentDTO);
+    }
+
+    public void delete(Long commentId) {
+        commentRepository.delete(commentId);
+    }
+
     public List<CommentDTO> findAll(Long boardId) {
         return commentRepository.findAll(boardId);
     }

@@ -7,7 +7,22 @@
         insert into comment_table(commentWriter, commentContents, boardId)
         values(#{commentWriter}, #{commentContents}, #{boardId})
     </insert>
+
+    <update id="update" parameterType="comment">
+        update comment_table
+        set commentWriter = #{commentWriter},
+            commentContents = #{commentContents}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from comment_table
+        where id = #{commentId}
+    </delete>
+
     <select id="findAll" parameterType="Long" resultType="comment">
-        select * from comment_table where boardId=#{boardId} order by id desc
+        select * from comment_table
+        where boardId = #{boardId}
+        order by id desc
     </select>
 </mapper>
